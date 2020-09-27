@@ -3,7 +3,16 @@
 <title>Mailroom</title>
 </head>
 <body>
+{% set navigation_bar = [
+    ('/donations/', 'all_donations', 'List all donations'),
+    ('/create/', 'new_donation', 'Add a new donation')
+] -%}
 	<h1>Donations</h1>
+<ul id="navigation">
+{% for href, id, caption in navigation_bar %}
+  <li><a href="{{ href|e }}">{{ caption|e }}</a></li>
+{% endfor %}
+</ul>
 	<h2>{% block subtitle %} {% endblock subtitle %}</h2>
 	{% block content %} {% endblock content %}
 </body>
